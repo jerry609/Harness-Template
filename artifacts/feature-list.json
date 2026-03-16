@@ -1,0 +1,22 @@
+{
+  "project": "Harness Template",
+  "updated_at": "2026-03-17",
+  "features": [
+    {
+      "id": "bootstrap-template",
+      "title": "Bootstrap the harness template",
+      "status": "done",
+      "spec": "README.md",
+      "plan": "docs/architecture/index.md",
+      "owner": "repo"
+    },
+    {
+      "id": "first-real-feature",
+      "title": "Replace this sample with your first real feature",
+      "status": "backlog",
+      "spec": "docs/product-specs/TEMPLATE.md",
+      "plan": "docs/exec-plans/TEMPLATE.md",
+      "owner": "unassigned"
+    }
+  ]
+}

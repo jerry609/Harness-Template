@@ -1,0 +1,58 @@
+# Pre-commit hooks for harness validation
+# See https://pre-commit.com for installation instructions.
+#
+# Install: pip install pre-commit && pre-commit install
+# Run manually: pre-commit run --all-files
+
+repos:
+  # Built-in hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-added-large-files
+        args: ['--maxkb=500']
+
+  # Local harness validation hooks
+  - repo: local
+    hooks:
+      - id: validate-artifacts
+        name: Validate harness artifacts
+        entry: python scripts/validate_artifacts.py
+        language: python
+        pass_filenames: false
+        always_run: true
+
+      - id: check-boundaries
+        name: Check module boundaries
+        entry: python scripts/check_boundaries.py
+        language: python
+        pass_filenames: false
+        files: '\.py$'
+
+      - id: lint-agent-friendly
+        name: Agent-friendly lint
+        entry: python scripts/lint_agent_friendly.py
+        language: python
+        pass_filenames: false
+        files: '\.py$'
+
+      - id: pre-commit-validate
+        name: Pre-commit harness checks
+        entry: bash scripts/pre-commit-validate.sh
+        language: system
+        pass_filenames: false
+        always_run: true
+
+  # Add your project-specific hooks below:
+  # - repo: https://github.com/psf/black
+  #   rev: 24.4.2
+  #   hooks:
+  #     - id: black
+  # - repo: https://github.com/PyCQA/ruff-pre-commit
+  #   rev: v0.4.8
+  #   hooks:
+  #     - id: ruff

@@ -20,3 +20,9 @@ jobs:
 
       - name: Validate harness artifacts
         run: python scripts/validate_artifacts.py
+
+      - name: Check module boundaries
+        run: python scripts/check_boundaries.py
+
+      - name: Run agent-friendly linter
+        run: python scripts/lint_agent_friendly.py

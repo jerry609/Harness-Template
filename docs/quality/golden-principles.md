@@ -12,3 +12,7 @@ Use these principles to keep the repository agent-friendly.
 8. Cleanup is part of delivery, not a separate phase.
 9. Small diffs are easier to verify, review, and resume.
 10. The repository should remain legible to the next agent run.
+11. Agent struggles are environment bugs — fix the harness, not just the prompt.
+12. Build rippable harnesses — do not over-engineer, models improve and today's guardrails may be unnecessary tomorrow.
+13. Boring technology wins — prefer mature, training-data-rich tools over cutting-edge frameworks.
+14. Enforce rules mechanically — if it is only in a document, it will eventually be ignored.

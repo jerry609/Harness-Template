@@ -13,6 +13,18 @@ This file routes agents to the right artifacts. It is not the full knowledge bas
 7. `artifacts/feature-list.json`
 8. `evals/README.md`
 
+## Load on demand (do not read unless the current task requires it)
+
+- `docs/architecture/boundaries.md` — when touching module boundaries
+- `docs/architecture/context-budget.md` — when context is running low
+- `docs/architecture/multi-session.md` — when planning multi-session work
+- `docs/architecture/multi-agent.md` — when coordinating multiple agents
+- `docs/architecture/tech-selection.md` — when choosing technologies
+- `docs/architecture/progressive-disclosure.md` — when managing prompt complexity
+- `docs/quality/linter-guide.md` — when writing or modifying lint rules
+- `docs/quality/debugging-agent-failures.md` — when an agent is failing repeatedly
+- `skills/` — when the task matches a specific skill
+
 ## Operating rules
 
 - Hidden context does not count. If it matters, put it in the repo.
@@ -22,6 +34,8 @@ This file routes agents to the right artifacts. It is not the full knowledge bas
 - Update progress, feature state, and decisions before ending a session.
 - Repeated review feedback should become docs, scripts, or CI rules.
 - Escalate only when judgment, production access, or missing secrets are required.
+- Run `python scripts/check_boundaries.py` and `python scripts/lint_agent_friendly.py` before committing.
+- When an agent struggles, treat it as an environment bug — see `docs/quality/debugging-agent-failures.md`.
 
 ## Session loop
 

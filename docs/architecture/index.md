@@ -6,11 +6,19 @@ This repository is organized for agent legibility first.
 
 - `docs/product-specs/` answers what should be built and why.
 - `docs/exec-plans/` answers how the current change will be executed.
+- `docs/architecture/boundaries.md` answers what dependencies are allowed.
+- `docs/architecture/multi-session.md` answers how to work across context windows.
+- `docs/architecture/multi-agent.md` answers how to coordinate multiple agents.
+- `docs/architecture/context-budget.md` answers how to manage context window limits.
+- `docs/architecture/tech-selection.md` answers how to choose technologies.
+- `docs/architecture/progressive-disclosure.md` answers when to load what context.
 - `artifacts/feature-list.json` answers what state each feature is in.
 - `artifacts/progress.md` answers what happened most recently.
 - `artifacts/decisions.md` answers why durable tradeoffs were made.
 - `evals/` answers whether the system actually worked.
 - `scripts/` provides narrow tools with stable, explicit behavior.
+- `prompts/` provides agent-specific prompts for different session types.
+- `skills/` provides task-specific instructions loaded on demand.
 - `AGENTS.md` only routes the agent to the right files.
 
 ## Boundary rules
@@ -32,6 +40,9 @@ Use this flow whenever possible:
 Add these gradually as your project matures:
 
 - lint and formatting checks
+- agent-friendly linter with remediation messages (`scripts/lint_agent_friendly.py`)
+- module boundary enforcement (`scripts/check_boundaries.py`)
+- pre-commit hooks (`.pre-commit-config.yaml`)
 - unit and integration tests
 - dependency boundary tests
 - schema validation at system boundaries
